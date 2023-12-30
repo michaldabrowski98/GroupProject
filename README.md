@@ -29,3 +29,13 @@
    ```
    make down
    ```
+## URLe aplikacji
+Zarówno aplikacja frontendowa jak i backendowa działają na localhoscie. 
+1. Aplikacja backendowa
+   ```
+   http://localhost:80/
+   ```
+2. Aplikacja frontendowa
+   ```
+   http://localhost:8081/
+   ```
