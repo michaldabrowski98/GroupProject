@@ -9,8 +9,11 @@
   },
   "dependencies": {
     "@vue/compiler-sfc": "^3.3.13",
+    "axios": "^1.6.5",
     "core-js": "^3.8.3",
-    "vue": "^3.2.26"
+    "vue": "^3.2.26",
+    "vue-router": "^4.2.5",
+    "vuetify": "^3.4.9"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
