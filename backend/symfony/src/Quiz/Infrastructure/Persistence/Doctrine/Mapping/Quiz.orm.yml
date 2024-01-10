@@ -1,0 +1,23 @@
+App\Quiz\Domain\Quiz:
+  type: entity
+  table: quiz
+  repositoryClass: App\Quiz\Domain\QuizRepository
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    title:
+      type: string
+      length: 255
+      nullable: false
+    description:
+      type: string
+      nullable: true
+    manyToOne:
+      user:
+        targetEntity: 'User'
+        joinColumn:
+          name: author_id
+          referencedColumnName: id
