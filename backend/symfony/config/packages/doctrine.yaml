@@ -22,6 +22,18 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Quiz/Infrastructure/Persistence/Doctrine/Mapping'
                 prefix: 'App\Quiz\Domain'
                 alias: Quiz
+            Question:
+                is_bundle: false
+                type: yml
+                dir: '%kernel.project_dir%/src/Quiz/Infrastructure/Persistence/Doctrine/Mapping'
+                prefix: 'App\Quiz\Domain'
+                alias: Question
+            Answer:
+                is_bundle: false
+                type: yml
+                dir: '%kernel.project_dir%/src/Quiz/Infrastructure/Persistence/Doctrine/Mapping'
+                prefix: 'App\Quiz\Domain'
+                alias: Answer
 
 when@test:
     doctrine:

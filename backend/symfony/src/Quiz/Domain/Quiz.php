@@ -3,10 +3,11 @@
 namespace App\Quiz\Domain;
 
 use App\User\Domain\User;
+use Doctrine\Common\Collections\Collection;
 
 class Quiz
 {
-    private int $id;
+    private ?int $id = null;
 
     private string $name;
 
@@ -14,12 +15,14 @@ class Quiz
 
     private User $author;
 
-    public function getId(): int
+    private iterable $questions;
+
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function setId(int $id): void
+    public function setId(?int $id): void
     {
         $this->id = $id;
     }
@@ -52,5 +55,15 @@ class Quiz
     public function setAuthor(User $author): void
     {
         $this->author = $author;
+    }
+
+    public function getQuestions(): iterable
+    {
+        return $this->questions;
+    }
+
+    public function setQuestions(iterable $questions): void
+    {
+        $this->questions = $questions;
     }
 }

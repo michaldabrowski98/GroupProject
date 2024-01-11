@@ -2,22 +2,26 @@
 
 namespace App\Quiz\Domain;
 
+use Doctrine\Common\Collections\Collection;
+
 class Question
 {
-    private int $id;
+    private ?int $id = null;
 
     private string $image;
 
     private string $content;
 
-    private array $answers;
+    private iterable $answers;
 
-    public function getId(): int
+    private Quiz $quiz;
+
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function setId(int $id): void
+    public function setId(?int $id): void
     {
         $this->id = $id;
     }
@@ -42,13 +46,23 @@ class Question
         $this->content = $content;
     }
 
-    public function getAnswers(): array
+    public function getAnswers(): iterable
     {
         return $this->answers;
     }
 
-    public function setAnswers(array $answers): void
+    public function setAnswers(iterable $answers): void
     {
         $this->answers = $answers;
+    }
+
+    public function getQuiz(): Quiz
+    {
+        return $this->quiz;
+    }
+
+    public function setQuiz(Quiz $quiz): void
+    {
+        $this->quiz = $quiz;
     }
 }

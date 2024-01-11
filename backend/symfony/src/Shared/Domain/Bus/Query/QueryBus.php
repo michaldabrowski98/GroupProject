@@ -4,5 +4,5 @@ namespace App\Shared\Domain\Bus\Query;
 
 interface QueryBus
 {
-    public function handle(Query $query): void;
+    public function handle(Query $query);
 }

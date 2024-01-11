@@ -1,0 +1,21 @@
+App\Quiz\Domain\Answer:
+  type: entity
+  table: answer
+  repositoryClass: App\Quiz\Domain\AnswerRepository
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    content:
+      type: string
+      nullable: false
+    isCorrect:
+      type: boolean
+      column: is_correct
+  manyToOne:
+    question:
+      targetEntity: 'App\Quiz\Domain\Question'
+      inversedBy: answers
+

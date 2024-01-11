@@ -3,13 +3,13 @@
 namespace App\Shared\Infrastructure\Bus\Query;
 
 use App\Shared\Domain\Bus\Query\Query;
+use App\Shared\Domain\Bus\Query\QueryBus;
 use Symfony\Component\Messenger\Exception\HandlerFailedException;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Messenger\Stamp\HandledStamp;
-use App\Shared\Domain\Bus\Query\Response;
 use Throwable;
 
-class MessengerQueryBus
+class MessengerQueryBus implements QueryBus
 {
     private MessageBusInterface $queryBus;
 
@@ -21,7 +21,7 @@ class MessengerQueryBus
     /**
      * @throws Throwable
      */
-    public function handle(Query $query): Response
+    public function handle(Query $query): mixed
     {
         try {
             $response = $this->queryBus->dispatch($query);
