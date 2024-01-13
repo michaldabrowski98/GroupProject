@@ -56,7 +56,7 @@
         ) {
           this.displayError = true;
         } else {
-          axios.post("http://localhost:8082/api/register", {
+          axios.post("http://localhost:82/api/register", {
             email: this.email,
             password: this.password,
           }).then(
