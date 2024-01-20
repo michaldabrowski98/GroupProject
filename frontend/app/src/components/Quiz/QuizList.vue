@@ -49,7 +49,7 @@
             if (response.status !== 200) {
               this.$router.push('/');
             }
-            this.quizes = response.data
+            this.quizes = response.data.quizes
           })
           .catch( e => {
             this.errors.push(e)
