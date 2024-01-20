@@ -4,6 +4,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import HomePage from './components/HomePage'
 import Login from "./components/Login/Login";
 import Registration from "./components/Login/Registration";
+import QuizList from "./components/Quiz/QuizList";
 
 const router = createRouter({
     history: createWebHashHistory(),
@@ -11,6 +12,7 @@ const router = createRouter({
         { path: '/', component: HomePage },
         { path: '/login', component: Login },
         { path: '/registration', component: Registration },
+        { path: '/quizlist', component: QuizList },
     ]
 })
 
