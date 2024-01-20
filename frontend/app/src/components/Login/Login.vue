@@ -57,7 +57,7 @@ export default {
         this.displayError = true;
       } else {
         this.zaczekaj = true;
-        axios.post("http://localhost:80/api/login_check", {
+        axios.post("http://localhost:82/api/login_check", {
           username: this.username,
           password: this.password,
 
