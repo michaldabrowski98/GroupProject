@@ -9,6 +9,8 @@ services:
       - APP_SECRET=${APP_SECRET}
     volumes:
       - ./symfony:/var/www
+    ports:
+      - "3001:3001"
 
   nginx:
     build:

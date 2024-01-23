@@ -13,6 +13,7 @@ const router = createRouter({
         { path: '/login', component: Login },
         { path: '/registration', component: Registration },
         { path: '/quizlist', component: QuizList },
+        { path: '/quiz/solve/:token', component: QuizWebSockets },
     ]
 })
 
@@ -20,6 +21,7 @@ import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
+import QuizWebSockets from "@/components/Quiz/QuizWebSockets/QuizWebSockets.vue";
 
 const vuetify = createVuetify({
     ssr: true,
@@ -30,5 +32,12 @@ const vuetify = createVuetify({
         defaultTheme: 'dark'
     }
 })
+
+// const socket = new WebSocket("ws://localhost:3001");
+//
+// socket.addEventListener("open", function() {
+//     console.log("CONNECTED");
+//     socket.send(JSON.stringify({"dadad": "daad"}));
+// });
 
 createApp(App).use(vuetify).use(router).mount('#app')
