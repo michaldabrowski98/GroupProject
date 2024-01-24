@@ -13,7 +13,7 @@ const router = createRouter({
         { path: '/login', component: Login },
         { path: '/registration', component: Registration },
         { path: '/quizlist', component: QuizList },
-        { path: '/quiz/solve/:token', component: QuizWebSockets },
+        { path: '/quiz/solve/:token', name: 'QuizSolve', component: QuizWebSockets },
     ]
 })
 
@@ -32,12 +32,5 @@ const vuetify = createVuetify({
         defaultTheme: 'dark'
     }
 })
-
-// const socket = new WebSocket("ws://localhost:3001");
-//
-// socket.addEventListener("open", function() {
-//     console.log("CONNECTED");
-//     socket.send(JSON.stringify({"dadad": "daad"}));
-// });
 
 createApp(App).use(vuetify).use(router).mount('#app')
