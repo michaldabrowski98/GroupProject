@@ -1,0 +1,27 @@
+App\Quiz\Domain\Question:
+  type: entity
+  table: question
+  repositoryClass: App\Quiz\Domain\QuestionRepository
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    image:
+      type: string
+      length: 255
+      nullable: false
+    content:
+      type: string
+      nullable: false
+  oneToMany:
+    answers:
+      targetEntity: 'App\Quiz\Domain\Answer'
+      mappedBy: question
+      cascade: [ "persist", "merge" ]
+  manyToOne:
+    quiz:
+      targetEntity: 'App\Quiz\Domain\Quiz'
+      inversedBy: questions
+      cascade: [ "persist", "merge" ]

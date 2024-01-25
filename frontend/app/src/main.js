@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import HomePage from './components/HomePage'
-import QuestionsAdd from './components/Questions/QuestionsAdd'
+import QuestionsAdd from "@/components/Questions/QuestionsAdd.vue"
 
 const router = createRouter({
     history: createWebHashHistory(),

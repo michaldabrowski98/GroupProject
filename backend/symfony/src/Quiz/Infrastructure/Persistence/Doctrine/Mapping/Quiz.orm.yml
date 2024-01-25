@@ -1,0 +1,29 @@
+App\Quiz\Domain\Quiz:
+  type: entity
+  table: quiz
+  repositoryClass: App\Quiz\Domain\QuizRepository
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    name:
+      type: string
+      length: 255
+      nullable: false
+    description:
+      type: string
+      nullable: true
+  manyToOne:
+    author:
+      targetEntity: 'App\User\Domain\User'
+      joinColumn:
+        name: author_id
+        referencedColumnName: id
+  oneToMany:
+    questions:
+      targetEntity: 'App\Quiz\Domain\Question'
+      mappedBy: quiz
+      cascade: [ "persist", "merge" ]
+
