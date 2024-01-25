@@ -11,4 +11,13 @@ class AnswerRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Answer::class);
     }
+
+    public function getAnswersByQuestionId(int $questionId): array
+    {
+        $query = $this->createQueryBuilder('a')
+            ->andWhere('a.question = :questionId')
+            ->setParameter('questionId', $questionId);
+
+        return $query->getQuery()->execute() ?? [];
+    }
 }

@@ -20,33 +20,62 @@ class QuizCreateCommandHandler implements CommandHandler
     public function __invoke(QuizCreateCommand $command): void
     {
         $quizData = $command->getQuiz();
+        $quiz = $this->getQuiz($command, $quizData);
+        $this->entityManager->persist($quiz);
+        $this->entityManager->flush();
+    }
+
+    public function getQuiz(QuizCreateCommand $command, array $quizData): Quiz
+    {
         $quiz = new Quiz();
         $quiz->setAuthor($command->getUser());
         $quiz->setName($quizData['title']);
         $quiz->setDescription($quizData['description']);
-        $quizQuestions  = $quizData['questions'];
-        $questions = [];
-        foreach($quizQuestions as $quizQuestion) {
-            $question = new Question();
-            $question->setImage($quizQuestion['image']);
-            $question->setContent($quizQuestion['content']);
+        $quizQuestions = $quizData['questions'];
+        $questions = $this->getQuestions($quizQuestions, $quiz);
+        $quiz->setQuestions($questions);
+        return $quiz;
+    }
 
-            $questionAnswers = $quizQuestion['answers'];
-            $answers = [];
-            foreach ($questionAnswers as $questionAnswer) {
-                $answer = new Answer();
-                $answer->setQuestion($question);
-                $answer->setContent($questionAnswer['content']);
-                $answer->setIsCorrect($questionAnswer['is_correct']);
-                $answers[] = $answer;
-            }
-            $question->setAnswers($answers);
-            $question->setQuiz($quiz);
+    public function getQuestions(array $quizQuestions, Quiz $quiz): array
+    {
+        $questions = [];
+        foreach ($quizQuestions as $quizQuestion) {
+            $question = $this->getQuestion($quizQuestion, $quiz);
             $questions[] = $question;
         }
-        $quiz->setQuestions($questions);
+        return $questions;
+    }
 
-        $this->entityManager->persist($quiz);
-        $this->entityManager->flush();
+    public function getQuestion(array $quizQuestion, Quiz $quiz): Question
+    {
+        $question = new Question();
+        $question->setImage($quizQuestion['image']);
+        $question->setContent($quizQuestion['content']);
+
+        $questionAnswers = $quizQuestion['answers'];
+        $answers = $this->getAnswers($questionAnswers, $question);
+        $question->setAnswers($answers);
+        $question->setQuiz($quiz);
+        return $question;
+    }
+
+    public function getAnswers(array $questionAnswers, Question $question): array
+    {
+        $answers = [];
+        foreach ($questionAnswers as $questionAnswer) {
+            $answer = $this->getAnswer($question, $questionAnswer);
+            $answers[] = $answer;
+        }
+        return $answers;
+    }
+
+    public function getAnswer(Question $question, array $questionAnswer): Answer
+    {
+        $answer = new Answer();
+        $answer->setQuestion($question);
+        $answer->setContent($questionAnswer['content']);
+        $answer->setIsCorrect($questionAnswer['is_correct']);
+        return $answer;
     }
 }

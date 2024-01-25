@@ -1,0 +1,24 @@
+App\Quiz\Domain\QuizSolveAnswer:
+  type: entity
+  table: quiz_solve_answer
+  repositoryClass: App\Quiz\Domain\QuizSolveAnswerRepository
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    participantName:
+      type: string
+      length: 255
+      nullable: false
+      column: participant_name
+  manyToOne:
+    answer:
+      targetEntity: 'App\Quiz\Domain\Answer'
+      joinColumn:
+        name: answer_id
+        referencedColumnName: id
+    quizSolve:
+      targetEntity: 'App\Quiz\Domain\QuizSolve'
+      inversedBy: quizSolveAnswers

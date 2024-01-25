@@ -1,0 +1,39 @@
+App\Quiz\Domain\QuizSolve:
+  type: entity
+  table: quiz_solve
+  repositoryClass: App\Quiz\Domain\QuizSolveRepository
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    token:
+      type: string
+      length: 255
+      nullable: false
+    startDate:
+      type: datetime
+      nullable: true
+      column: start_date
+    endDate:
+      type: datetime
+      nullable: true
+      column: end_date
+  manyToOne:
+    user:
+      targetEntity: 'App\User\Domain\User'
+      joinColumn:
+        name: user_id
+        referencedColumnName: id
+    quiz:
+      targetEntity: 'App\Quiz\Domain\Quiz'
+      joinColumn:
+        name: quiz_id
+        referencedColumnName: id
+  oneToMany:
+    quizSolveAnswers:
+      targetEntity: 'App\Quiz\Domain\QuizSolveAnswer'
+      mappedBy: quizSolve
+      cascade: [ "persist", "merge" ]
+

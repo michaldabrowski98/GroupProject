@@ -21,4 +21,12 @@ class QuizRepository extends ServiceEntityRepository
 
         return $query->getQuery()->execute() ?? [];
     }
+    public function getQuizById(int $quizId): ?Quiz
+    {
+        $query = $this->createQueryBuilder('q')
+            ->andWhere('q.id = :quizId')
+            ->setParameter('quizId', $quizId);
+
+        return $query->getQuery()->getSingleResult() ?? null;
+    }
 }

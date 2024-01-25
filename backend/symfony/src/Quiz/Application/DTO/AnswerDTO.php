@@ -4,9 +4,20 @@ namespace App\Quiz\Application\DTO;
 
 class AnswerDTO implements \JsonSerializable
 {
+    private int $id;
     private string $content;
 
     private bool $isCorrect;
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
 
     public function getContent(): string
     {
@@ -31,6 +42,7 @@ class AnswerDTO implements \JsonSerializable
     public function jsonSerialize(): array
     {
         return [
+            'id' => $this->getId(),
             'content' => $this->getContent(),
             'is_correct' => $this->isCorrect()
         ];
