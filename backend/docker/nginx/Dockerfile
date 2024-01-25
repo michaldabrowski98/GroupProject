@@ -6,4 +6,4 @@ CMD ["nginx"]
 
 
 
-EXPOSE 80 443
+EXPOSE 82 443

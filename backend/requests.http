@@ -1,0 +1,54 @@
+POST http://localhost:80/api/login_check HTTP/1.1
+content-type: application/json
+
+{
+    "username": "mdboxman@gmail.com",
+    "password": "password"
+}
+
+###
+
+GET http://localhost:80/api/quiz/list HTTP/1.1
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MDUxNDkyNTksImV4cCI6MTcwNTE1Mjg1OSwicm9sZXMiOltdLCJ1c2VybmFtZSI6Im1kYm94bWFuQGdtYWlsLmNvbSJ9.QzcL4IfyJ207y5z-TTfCFaFD-WtzeLiJS8RVW8k5mof0oenP08d21VUhtLBELkzf0MBjE_uqhw7TK0PxVzEZrHE3GwS4NMbNMk7QF24COBYYRfeGB0wyt_U_CmXgcSrgOFXxseyDTFx-ZP-hhedKjZNzhtifL9XJrmhvetud6NrwZNyUqfXrLrqncAT7eqEp15n7_nlrp8byz23OKzhPcRMr8P3wamXJgyCBpjNzGL4HyVtkEVd70ZiGPi2Eyww65VcNmUf31PfpMM4nwuSnI8TMQHFGHDi80X1vW4XXJuu2S1n41Q0FraH44IOZjv_u1qg1vZWkhRfwmtTJY5yXkg
+
+###
+
+POST http://localhost:80/api/quiz/add HTTP/1.1
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MDUxNDkyNTksImV4cCI6MTcwNTE1Mjg1OSwicm9sZXMiOltdLCJ1c2VybmFtZSI6Im1kYm94bWFuQGdtYWlsLmNvbSJ9.QzcL4IfyJ207y5z-TTfCFaFD-WtzeLiJS8RVW8k5mof0oenP08d21VUhtLBELkzf0MBjE_uqhw7TK0PxVzEZrHE3GwS4NMbNMk7QF24COBYYRfeGB0wyt_U_CmXgcSrgOFXxseyDTFx-ZP-hhedKjZNzhtifL9XJrmhvetud6NrwZNyUqfXrLrqncAT7eqEp15n7_nlrp8byz23OKzhPcRMr8P3wamXJgyCBpjNzGL4HyVtkEVd70ZiGPi2Eyww65VcNmUf31PfpMM4nwuSnI8TMQHFGHDi80X1vW4XXJuu2S1n41Q0FraH44IOZjv_u1qg1vZWkhRfwmtTJY5yXkg
+
+{
+  "title": "Nowszy quiz",
+  "description": "Opis",
+  "questions": [
+    {
+      "image": "Link do obrazka 1",
+      "content": "Treść pytania 1",
+      "answers": [
+        {"content": "Treść odpowiedzi", "is_correct": true},
+        {"content": "Treść odpowiedzi", "is_correct": false},
+        {"content": "Treść odpowiedzi", "is_correct": false},
+        {"content": "Treść odpowiedzi", "is_correct": false}
+      ]
+    },
+    {
+      "image": "Link do obrazka 2",
+      "content": "Treść pytania 2",
+      "answers": [
+        {"content": "Treść odpowiedzi", "is_correct": true},
+        {"content": "Treść odpowiedzi", "is_correct": false},
+        {"content": "Treść odpowiedzi", "is_correct": false},
+        {"content": "Treść odpowiedzi", "is_correct": false}
+      ]
+    },
+    {
+      "image": "Link do obrazka 3",
+      "content": "Treść pytania 3",
+      "answers": [
+        {"content": "Treść odpowiedzi", "is_correct": true},
+        {"content": "Treść odpowiedzi", "is_correct": false},
+        {"content": "Treść odpowiedzi", "is_correct": false},
+        {"content": "Treść odpowiedzi", "is_correct": false}
+      ]
+    }
+  ]
+}
