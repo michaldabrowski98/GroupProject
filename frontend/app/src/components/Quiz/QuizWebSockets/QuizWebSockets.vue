@@ -101,7 +101,9 @@
   </v-container>
   <div v-if="isAdmin">
     <v-btn  block class="mt-2" style="background:#ee5a32" v-on:click="nextQuestion" v-if="message.length !== 0 ">Następne pytanie</v-btn>
-    <v-btn  block class="mt-2" style="background:#ee5a32" v-on:click="nextQuestion" v-else>Zakończ</v-btn>
+    <router-link :to="{ name: 'QuizSummary', params: { token: this.$route.params.token }}" v-if="message.length === 0">
+      <v-btn  block class="mt-2" style="background:#ee5a32" v-on:click="endConnection">Zakończ</v-btn>
+    </router-link>
   </div>
 
 </template>
@@ -125,6 +127,7 @@ export default {
   mounted() {
     this.socket = new WebSocket('ws://localhost:3001');
     console.log("CONNECTED");
+    console.log(this.$route.params.token);
     this.socket.onmessage = (event) => {
       let data = JSON.parse(event.data);
       if (data.type === 'alert') {
@@ -137,20 +140,29 @@ export default {
   },
   methods: {
     nextQuestion() {
-      console.log('karaluch');
       this.socket.send(JSON.stringify({"type":"control", "action": "next"}));
-      console.log(this.message.image);
     },
     startQuiz() {
-      this.socket.send(JSON.stringify({"type":"control", "action": "start", "token": "671a1c8dedd619e28a5c089ce4b3ec7a"}));
+      this.socket.send(JSON.stringify({"type":"control", "action": "start", "token": this.$route.params.token}));
       this.quizStarted = true;
     },
     addUser() {
       this.socket.send(JSON.stringify({"type":"user_connect", "action": "add_user", "username": this.username}));
     },
     sendAnswer(answerId) {
-      console.log(JSON.stringify(answerId));
-      this.socket.send(JSON.stringify({"type":"answer", "action": "answer", "answer_id": answerId, "username": this.username, "token": "671a1c8dedd619e28a5c089ce4b3ec7a"}));
+      this.socket.send(JSON.stringify(
+            {
+              "type":"answer",
+              "action": "answer",
+              "answer_id": answerId,
+              "username": this.username,
+              "token": this.$route.params.token
+            }
+          )
+      );
+    },
+    endConnection() {
+      this.socket.close();
     }
   },
 }

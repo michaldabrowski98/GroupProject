@@ -14,6 +14,7 @@ const router = createRouter({
         { path: '/registration', component: Registration },
         { path: '/quizlist', component: QuizList },
         { path: '/quiz/solve/:token', name: 'QuizSolve', component: QuizWebSockets },
+        { path: '/quiz/solve/:token/summary', name: 'QuizSummary', component: QuizSummary },
     ]
 })
 
@@ -22,6 +23,7 @@ import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 import QuizWebSockets from "@/components/Quiz/QuizWebSockets/QuizWebSockets.vue";
+import QuizSummary from "@/components/Quiz/QuizSummary/QuizSummary.vue";
 
 const vuetify = createVuetify({
     ssr: true,

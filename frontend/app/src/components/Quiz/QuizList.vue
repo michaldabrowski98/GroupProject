@@ -19,7 +19,7 @@
             <td class="text-left">{{ quiz.created_at }}</td>
             <td class="text-left">
               <router-link :to="{ name: 'QuizSolve', params: { token: quiz.token }}">
-                <v-btn style="background:#ee5a32" v-on:click="startQuiz(quiz.id)">Start</v-btn>
+                <v-btn style="background:#ee5a32" v-on:click="startQuiz(quiz.id, quiz.token)">Start</v-btn>
               </router-link>
             </td>
           </tr>
@@ -72,14 +72,13 @@
         return md5(JSON.stringify({"id": id, "date": Date()}));
       },
       startQuiz(id, token) {
+        console.log(token);
         axios.post(`http://localhost:80/api/quiz/solve/start`, {
           quiz_id: id,
-          password: token,
-
-          headers: {
-            "Authorization": `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`
-          }
-        })
+          token: token
+        },
+            this.config
+        )
             .then(response => {
               if (response.status !== 200) {
                 this.$router.push('/');
