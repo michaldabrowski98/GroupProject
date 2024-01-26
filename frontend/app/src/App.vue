@@ -3,7 +3,7 @@
     <Header/>
     <br/>
     <br/>
-    <v-container class="ma-16"><router-view/></v-container>
+    <v-container><router-view/></v-container>
     <Footer/>
     </v-app>
 </template>
