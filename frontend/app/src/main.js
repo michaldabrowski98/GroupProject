@@ -11,7 +11,7 @@ const router = createRouter({
     history: createWebHashHistory(),
     routes: [
         { path: '/', component: HomePage },
-        { path: '/questions,', component: QuestionsAdd},
+        { path: '/questions', component: QuestionsAdd},
         { path: '/login', component: Login },
         { path: '/registration', component: Registration },
         { path: '/quizlist', component: QuizList },
