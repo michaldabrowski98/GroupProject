@@ -70,7 +70,7 @@ export default {
             (res) => {
               this.displaySuccess = true;
               sessionStorage.setItem('token', JSON.stringify(res.data.token));
-              this.$router.push('/');
+              this.$router.push('/quizlist');
 
             }
         ).catch(
