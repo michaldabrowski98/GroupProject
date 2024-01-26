@@ -17,7 +17,7 @@ class QuizSolveCreateCommandHandler implements CommandHandler
 
     public function __invoke(QuizSolveCreateCommand $command): void
     {
-        $quizSolve = $this->getQuizSolve($command);//dd($quizSolve);
+        $quizSolve = $this->getQuizSolve($command);
         $this->entityManager->persist($quizSolve);
         $this->entityManager->flush();
     }

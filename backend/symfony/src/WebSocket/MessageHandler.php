@@ -43,6 +43,7 @@ class MessageHandler implements MessageComponentInterface
     public function onClose(ConnectionInterface $conn): void
     {
         $this->connections->detach($conn);
+        $this->users = [];
     }
 
     public function onError(ConnectionInterface $conn, \Exception $e): void

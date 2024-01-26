@@ -32,4 +32,14 @@ class QuizSolveAnswerRepository extends ServiceEntityRepository
             ]
         );
     }
+
+    public function getQuizSolveAnswerData(string $token): array
+    {
+        $conn = $this->_em->getConnection();
+        return $conn->query(
+            sprintf("SELECT qsa.participant_name, qsa.answer_id, a.is_correct FROM quiz_solve_answer qsa JOIN quiz_solve qs ON qsa.quiz_solve_id = qs.id 
+                    LEFT JOIN answer a ON qsa.answer_id = a.id
+                    WHERE qs.token = '%s'", $token)
+        )->fetchAllAssociative() ?? [];
+    }
 }

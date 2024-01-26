@@ -16,7 +16,7 @@
             <td class="text-left">{{ quiz.id }}</td>
             <td class="text-left">{{ quiz.title }}</td>
             <td class="text-left">{{ quiz.questions_number }}</td>
-            <td class="text-left">{{ quiz.created_at }}</td>
+            <td class="text-left">{{ quiz.created_at.date }}</td>
             <td class="text-left">
               <router-link :to="{ name: 'QuizSolve', params: { token: quiz.token }}">
                 <v-btn style="background:#ee5a32" v-on:click="startQuiz(quiz.id, quiz.token)">Start</v-btn>

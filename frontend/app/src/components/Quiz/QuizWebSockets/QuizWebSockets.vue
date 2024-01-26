@@ -66,7 +66,7 @@
         ></v-img>
       </v-card-item>
       <v-card-item>
-        <v-card-title>
+        <v-card-title class="text-wrap">
           {{ message.content }}
         </v-card-title>
       </v-card-item>
