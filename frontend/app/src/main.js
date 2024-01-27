@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import HomePage from './components/HomePage'
+import QuestionsAdd from "@/components/Questions/QuestionsAdd.vue"
 import Login from "./components/Login/Login";
 import Registration from "./components/Login/Registration";
 import QuizList from "./components/Quiz/QuizList";
@@ -10,6 +11,7 @@ const router = createRouter({
     history: createWebHashHistory(),
     routes: [
         { path: '/', component: HomePage },
+        { path: '/questions', component: QuestionsAdd},
         { path: '/login', component: Login },
         { path: '/registration', component: Registration },
         { path: '/quizlist', component: QuizList },
